@@ -1,0 +1,9 @@
+{
+    "name": "SHPS4Node-GUI",
+    "version": "0.1.0",
+    "main": "./shps4node-gui-index.js",
+    "author": "Marco Alka <me@marco-alka.de>",
+    "website": "https://shps.io",
+    "GUID": "F285D821-0596-4B1B-A4AE-844DEE878902",
+	"dependencies": {}
+}
