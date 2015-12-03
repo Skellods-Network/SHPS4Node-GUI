@@ -24,7 +24,13 @@ INSERT INTO `css` (`ID`, `name`, `content`, `comment`, `namespace`, `language`, 
 (5, '.u-clickable', 'cursor: pointer;\r\n', '', 0, 0, 0),
 (6, '.u-clickable:hover', 'color: hsl(4, 100%, 50%);\r\nbox-shadow: 0px 0px 10px 0px hsla(4, 100%, 50%, 0.75);', '', 0, 0, 0),
 (7, '.u-clickable--no-shadow:hover', 'box-shadow: none !important;', '', 0, 0, 0),
-(8, '.t-default__body', 'background-color: hsl(0,0%,15%);', '', 0, 0, 0);
+(8, '.t-default__body', 'background-color: hsl(0,0%,15%);', '', 0, 0, 0),
+(9, 'html, body', 'color: hsl(0,0%,95%);\r\n\r\nwidth: 100%;\r\nheight: 100%;', '', 0, 0, 0),
+(10, '.c-working', 'display: none;', 'Working Indicator', 0, 0, 0),
+(11, '.u-center__outer-div', 'position: relative;\nwidth: 1px;\nheight: 50%;\noverflow: visible;\nmargin: auto;', '', 0, 0, 0),
+(12, '.u-center__inner-div', 'vertical-align: bottom;\r\nposition: absolute;\r\nbottom: 0;', '', 0, 0, 0),
+(13, '.u-center__element', 'margin-bottom: -50%;\r\nmargin-left: -50%;', '', 0, 0, 0),
+(14, '.o-overlay__background', 'position: fixed;\nwidth: 100%;\nheight: 100%;\nbackground: black;\nbackground-color: hsla(0, 0%, 0%, 0.6);\nz-index: 99999;\ntop: 0px;\nleft: 0px;', '', 0, 0, 0);
 
 TRUNCATE TABLE `filetype`;
 INSERT INTO `filetype` (`ID`, `name`, `mimeType`) VALUES
@@ -46,8 +52,9 @@ INSERT INTO `include` (`file`, `fileType`, `namespace`) VALUES
 (13, 2, 0),
 (14, 2, 0),
 (15, 1, 0),
-(16, 2, 0),
-(17, 2, 0);
+(21, 2, 0),
+(17, 2, 0),
+(18, 2, 0);
 
 TRUNCATE TABLE `language`;
 INSERT INTO `language` (`ID`, `name`) VALUES
@@ -75,11 +82,14 @@ INSERT INTO `namespace` (`ID`, `name`) VALUES
 TRUNCATE TABLE `oldpassword`;
 TRUNCATE TABLE `partial`;
 INSERT INTO `partial` (`ID`, `name`, `language`, `content`, `namespace`, `accessKey`, `extSB`) VALUES
-(1, 'site', 0, '<!DOCTYPE HTML>\n\n<title>SHPS GUI</title>\n<style type="text/css">\n* {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  position: relative;\n  z-index: 0;\n}\n</style>\n\n{$css}\n{$elements}\n\n<body class="t-default__body">\n\n{$menubar}\n{$sidemenu}\n{$body}\n\n{$js}', 0, 0, 0),
+(1, 'site', 0, '<!DOCTYPE HTML>\n\n<title>SHPS GUI</title>\n<style type="text/css">\n* {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  position: relative;\n  z-index: 0;\n}\n</style>\n\n{$css}\n{$elements}\n\n<body class="t-default__body">\n\n{$menubar}\n{$sidemenu}\n{$helpers}\n{$body}\n\n{$js}', 0, 0, 0),
 (2, 'test', 0, 'TEST ELEMENT', 1, 0, 0),
-(3, 'menubar', 0, '<!-- <div class="c-menubar / t-default__menubar">\r\n  <span class="fa fa-bars fa-2x / js-interact-menu__show-sidemenu / u-clickable u-clickable--no-shadow"></span>\r\n</div> -->\r\n<paper-toolbar>\r\n  <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>\r\n  <div class="title">Title</div>\r\n</paper-toolbar>', 0, 0, 0),
+(3, 'menubar', 0, '<paper-toolbar>\r\n  <paper-icon-button icon="menu"></paper-icon-button>\r\n  <div class="title">SHPS GUI</div>\r\n</paper-toolbar>', 0, 0, 0),
 (4, 'sidemenu', 0, '<div class="c-sidemenu">\r\n\r\n</div>', 0, 0, 0),
-(6, 'elements', 0, '<link rel="import" href="https://cdn.rawgit.com/download/polymer-cdn/1.0.1/lib/paper-toolbar/paper-toolbar.html">', 0, 0, 0);
+(8, 'login', 0, '<paper-dialog modal class="js-login__dialog">\n\n  <h2>###login-header###</h2>\n  ###login-description###\n\n  <paper-input label="###login-user###" class="js-login__user"></paper-input>\n  <paper-input label="###login-password###" type="password" class="js-login__password"></paper-input>\n\n  <div class="buttons">\n    <paper-button class="js-login__submit">###login-submit###</paper-button>\n  </div>\n\n</paper-dialog>', 0, 0, 0),
+(6, 'elements', 0, '<link rel="import" href="/iron-input/iron-input.html">\r\n<link rel="import" href="/iron-icon/iron-icon.html">\r\n<link rel="import" href="/iron-icons/iron-icons.html">\r\n\r\n<link rel="import" href="/paper-toolbar/paper-toolbar.html">\r\n<link rel="import" href="/paper-icon-button/paper-icon-button.html">\r\n<link rel="import" href="/paper-dialog/paper-dialog.html">\r\n<link rel="import" href="/paper-dialog-behavior/paper-dialog-behavior.html">\r\n<link rel="import" href="/paper-input/paper-input.html">\r\n<link rel="import" href="/paper-input/paper-input-container.html">\r\n<link rel="import" href="/paper-button/paper-button.html">\r\n\r\n<link rel="stylesheet" href="/paper-styles/color.html">', 0, 0, 0),
+(9, 'helpers', 0, '{$login}\n{$workingIndicator}', 0, 0, 0),
+(10, 'workingIndicator', 0, '<div class="o-overlay__background / c-working">\r\n  <div class="u-center__outer-div">\r\n    <div class="u-center__inner-div">\r\n      <span class="fa fa-cog fa-spin fa-5x / u-center__element"></span>\r\n    </div>\r\n  </div>\r\n</div>', 0, 0, 0);
 
 TRUNCATE TABLE `passquery`;
 TRUNCATE TABLE `plugin`;
@@ -119,7 +129,11 @@ INSERT INTO `upload` (`ID`, `name`, `fileName`, `uploadTime`, `lastModified`, `m
 (14, 'js_pace', 'pace.min.js', 0, 0, 2, 1, 604800, 0, '24d2d5e3e331c4efa3cda1e1851b31a7', 12507, 12507),
 (15, 'css_pace', 'pace-style.css', 0, 0, 1, 1, 604800, 0, 'f4b4cacac1c52820608b0275fa256f36', 336, 336),
 (16, 'js_shim-shadowdom', 'ShadowDOM.min.js', 0, 0, 2, 1, 604800, 0, '5c6669a4628df199a668289da1008bb9', 71254, 71254),
-(17, 'js_polymer', 'webcomponents-lite.min.js', 0, 0, 2, 1, 604800, 0, '940384b4e01725e7d410505b0c7ef991', 38965, 38965);
+(17, 'js_polymer', 'webcomponents-lite.min.js', 0, 0, 2, 1, 604800, 0, '940384b4e01725e7d410505b0c7ef991', 38965, 38965),
+(18, 'js_webAnim', 'web-animations.min.js', 0, 0, 2, 1, 604800, 0, 'f1644425dbbe0a82d3ab4843201b4e95', 42328, 42328),
+(19, 'js_webAnim_next', 'web-animations-next.min.js', 0, 0, 2, 1, 604800, 0, '8960dacf803cd0b1fd7ff82d3490cf3a', 58002, 58002),
+(20, 'js_webAnim_next-light', 'web-animations-next-lite.min.js', 0, 0, 2, 1, 604800, 0, 'bf8f9e065cf173de0d040b36b93625eb', 45596, 45596),
+(21, 'js_gui', 'SHPS-GUI.js', 0, 0, 2, 1, 604800, 0, '1679fd8bc4907919c5b1e733f83ed484', 369, 369);
 
 TRUNCATE TABLE `user`;
 TRUNCATE TABLE `usersecurity`;
