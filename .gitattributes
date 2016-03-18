@@ -15,3 +15,7 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Custom
+*.json	 diff=astextplain
+*.js	 diff=astextplain
