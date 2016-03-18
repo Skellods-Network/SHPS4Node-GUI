@@ -103,12 +103,9 @@ Interaction.prototype.boot = function () {
 			
 			return new Promise(($res, $rej) => {
 				
-				sgui.comm.request.bind(sgui.util, 'getPart', { part: 'menu', }).then(
+				sgui.comm.request('getPart', { part: 'menu', }).then(
 				
-					$r => {
-						
-						
-					},
+					sgui.comm.fire.bind(sgui.comm, 'menu', 'update'),
 					$rej
 				)
 			});
