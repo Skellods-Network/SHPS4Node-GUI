@@ -1,0 +1,68 @@
+{
+  "configHeader": {
+    "description": "The domain of VHost which should be able to use this DB config",
+    "SHPSVERSION_MA": 4,
+    "SHPSVERSION_MI": 2,
+    "type": "database",
+    "vhost": "localhost"
+  },
+  "alias": {
+    "description": "The alias name you can use to work with this database from the SQL class",
+    "type": "string",
+    "default": "default",
+    "value": "usermanagement"
+  },
+  "host": {
+    "description": "DB host; insert file path in case of SQLite",
+    "type": "string",
+    "default": "localhost",
+    "value": "localhost"
+  },
+  "port": {
+    "description": "DB port",
+    "type": "number",
+    "default": 3306,
+    "value": 3306
+  },
+  "name": {
+    "description": "Name of schema",
+    "type": "string",
+    "default": "shps_test",
+    "value": "shps_gui"
+  },
+  "user": {
+    "description": "DB user",
+    "type": "string",
+    "default": "shps",
+    "value": "shps"
+  },
+  "pass": {
+    "description": "User's password",
+    "type": "string",
+    "default": "shps",
+    "value": "shps"
+  },
+  "prefix": {
+    "description": "Table prefix",
+    "type": "string",
+    "default": "",
+    "value": ""
+  },
+  "type": {
+    "description": "Type of DB",
+    "type": "number",
+    "default": 32,
+    "options": {
+      "MySQL": 2,
+      "MSSQL": 16,
+      "SQLite": 32
+    },
+    "value": 2
+  },
+  "connectionLimit": {
+    "description": "Maximum number of simultaneous connections to the DB server",
+    "type": "number",
+    "default": 100,
+    "value": 100
+  }
+}

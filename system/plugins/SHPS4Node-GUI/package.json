@@ -1,6 +1,7 @@
 {
     "name": "SHPS4Node-GUI",
     "version": "0.1.0",
+    "shps": "4.4.x",
     "main": "./shps4node-gui-index.js",
     "author": "Marco Alka <me@marco-alka.de>",
     "website": "https://shps.io",
